@@ -1,0 +1,748 @@
+[2026-06-06 23:12:35] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-06 23:16:02] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-06 23:16:40] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-06 23:16:44] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-06 23:17:41] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-06 23:17:50] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:26:15] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:28:07] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:28:37] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:34:03] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:34:36] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:34:39] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:41:33] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:42:02] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:42:29] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:42:30] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:43:05] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:43:49] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:44:13] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:45:25] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:46:20] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:48:36] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:49:12] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:49:14] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:49:52] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:50:36] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:50:39] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:50:40] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:53:06] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:54:55] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:56:31] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-06 23:57:16] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-07 00:01:51] - FROM: 10_ForcePwd - TRANSAZIONE:
+NQuery:1; Transaction:1; RollBack:0; 
+QUERY:
+  type        :U
+  RC          :0
+  N.field     :1
+  N Rec       :1
+  SQL text    :UPDATE `utenti` SET `PWD`=?,`PWD2CHANGE`=? 
+          WHERE 
+          CF=?
+PARMS:
+0 => admin
+1 => 0
+2 => FRMNML00A01C745Y
+
+
+[2026-06-07 16:46:22] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-07 16:48:40] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-07 16:51:53] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-07 16:52:01] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-07 16:52:17] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :1
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-08 11:33:55] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :0
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
+[2026-06-08 11:34:11] - FROM: 00_Login - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :13
+  N Rec       :0
+  SQL text    :SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
+         `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
+         `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
+          FROM `utenti`, `siti`, `diz_soc_abilitazioni`, `utenti_impiego` 
+          WHERE 
+          `utenti`.`ID_Sito`= `siti`.`ID_Sito` AND
+          `utenti`.`ID_Abil`= `diz_soc_abilitazioni`.`ID_Abil` AND
+          `utenti`.`ID_Utente`= `utenti_impiego`.`ID_Utente` AND
+          `utenti`.`ID_Sito`=`utenti_impiego`.`ID_Sito` AND
+          `utenti`.`ID_Abil`=`utenti_impiego`.`ID_Abil` AND
+          `utenti_impiego`.`DataFine` IS NULL AND
+          `utenti`.`DataFine` IS NULL AND
+          UID=? and PWD=? order by sito
+PARMS:
+0 => root
+1 => admin
+
+
