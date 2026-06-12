@@ -1,0 +1,138 @@
+/* HEADER TEXT - INIZIO */
+.C_CmbSrcTxt 
+{
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  font-size: 12px;   
+  border-radius: 20px 0px 0px 20px;  
+  border-right: none;
+  cursor: pointer;        
+}
+
+.C_CmbSrcBtn 
+{
+  float: right;
+  width: 20%;
+  background: #2196F3;
+  font-size: 20px;
+  border-radius: 0px 20px 20px 0px;        
+  border-left: none;
+  cursor: pointer;
+}
+/* HEADER TEXT - FINE */
+
+/* USEDFILTERS - INIZIO */ 
+.UsdFltrAll
+{
+  height:20px;
+  float: left;
+  width: 25%;
+  background: skyblue;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 20px 20px 20px 20px;
+}
+      
+.UsdFltrLft
+{
+  height:20px;
+  float: left;
+  width: 16%;
+  background: #f1f1f1;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 20px 0px 0px 20px;
+  border-right: none;        
+}
+      
+.UsdFltrRght
+{
+  height:20px;    
+  float: left;
+  width: 9%;
+  background: #f1f1f1;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 0px 20px 20px 0px; 
+  border-left: none;
+}
+/* USDFILTERS - FINE */
+    
+.C_DivLst 
+{
+  position: relative;
+  top:1.01vh;
+  left:0;      
+  width:100%;
+  height:100%;
+  z-index: 1;
+  margin: auto;
+  overflow-x: hidden;
+  overflow-y: auto; 
+  /*font-size: 20px; - demanded to the parts of the div*/
+  background-color: yellow; 
+  border:solid;
+  /* Lst is fixed, so no 0.5 second transition effect to slide in the sidenav */    
+}
+
+.C_TblLst 
+{
+  width: 100%;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.C_TblLst thead
+{
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 4px 0px 4px 0px; /* top right bottom left */ 
+  width:inherit;
+  background: white;
+}
+
+.C_TblLst th 
+{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 50px;       
+  background: inherit;
+  color: black;      
+  border-bottom: 2px solid #000;
+  font-size: 14px;    
+}
+
+/* filters */
+
+.C_TblLst td 
+{
+  padding: 3px 10px;
+  border: 1px solid #000;
+  background: #fff;
+  vertical-align: top;
+  font-size: 12px;    
+}
+
+/* BTNADD - INIZIO */ 
+.C_AddBtn
+{
+  /*position: fixed;*/
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  width: 60px;
+  Height:60px;
+  padding: 5px;
+  cursor: pointer;
+  /*cursor: move;*/
+  user-select: none;  
+  z-index: 2;
+  -webkit-user-drag: none; /* Impedisce il trascinamento nativo delle immagini su browser diversi */
+
+}
+/* BTNADD - FINE */  
+
