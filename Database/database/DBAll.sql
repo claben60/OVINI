@@ -310,7 +310,7 @@ values
    'farm',
    'FRMNML00A01C745Y',
    'root',
-   'admin',
+   '$2y$10$No7my5ys.Sl5pmxPPVXkkeaTJKY271wAbkUUlT41sx0Cieqd7xwIS',
    true,
    true,
    true,
