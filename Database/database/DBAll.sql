@@ -11,20 +11,20 @@ DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 COMMIT;
 
 /*
- * diz_Utenti_CausaFine
+ * DizUtentiCausaFine
  */
 
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`diz_utenti_causafine`;
+DROP TABLE IF EXISTS `sacs`.`DizUtentiCausaFine`;
 
-CREATE TABLE IF NOT EXISTS `sacs`.`diz_utenti_causafine` 
+CREATE TABLE IF NOT EXISTS `sacs`.`DizUtentiCausaFine`
 ( 
-   `ID_CausaFine`    SERIAL                  NOT NULL     PRIMARY KEY          COMMENT 'Calcolato: progr, Inizia da 1', 
-   `Descrizione`     VARCHAR(40)             NOT NULL 
+   `idCausaFine`     SERIAL                  NOT NULL     PRIMARY KEY          COMMENT 'Calcolato: progr, Inizia da 1', 
+   `descrizioneFine`     VARCHAR(40)             NOT NULL 
 ) ENGINE = InnoDB;
 
-INSERT INTO `sacs`.`diz_utenti_causafine` (`Descrizione`) VALUES 
+INSERT INTO `sacs`.`DizUtentiCausaFine` (`descrizioneFine`) VALUES 
 ('Eta\'/Pensione'),
 ('Dimissioni volontarie'),
 ('Premorienza/Malattia'),
@@ -33,27 +33,27 @@ INSERT INTO `sacs`.`diz_utenti_causafine` (`Descrizione`) VALUES
 COMMIT;
 
 /*
- * diz_siti`
+ * DizSiti - Anagrafica dei Luoghi di Lavoro
  */
 
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`diz_siti`;
+DROP TABLE IF EXISTS `sacs`.`DizSiti`;
 
-CREATE TABLE IF NOT EXISTS `sacs`.`diz_siti` 
+CREATE TABLE IF NOT EXISTS `sacs`.`DizSiti` 
 ( 
-   `ID_Sito`       SERIAL              NOT NULL     PRIMARY KEY              COMMENT 'Calcolato: progr, Inizia da 1', 
-   `Sito`          VARCHAR(7)          NOT NULL                              COMMENT 'Calcolato: SACS_+progr', 
-   `Indirizzo`     VARCHAR(100)        NOT NULL,
-   `Pianta`        VARCHAR(255)        NULL
+   `idSito`        SERIAL              NOT NULL     PRIMARY KEY              COMMENT 'Calcolato: progr, Inizia da 1. Chiave numerica per le JOIN ad alta velocità ', 
+   `codiceSito`    VARCHAR(7)          NOT NULL                              COMMENT 'Calcolato: SACS_+progr, usato per ricerche e interfaccia.', 
+   `indirizzo`     VARCHAR(100)        NOT NULL,
+   `piantaAsset`   VARCHAR(255)        NULL                                  COMMENT 'Percorso o identificativo della planimetria.'
 ) ENGINE = InnoDB;
 
-INSERT INTO `sacs`.`diz_siti`
+INSERT INTO `sacs`.`DizSiti`
 (
-   `ID_sito`, 
-   `Sito`,
-   `Indirizzo`,
-   `Pianta`
+   `idSito`, 
+   `codiceSito`,
+   `indirizzo`,
+   `piantaAsset`
 ) 
 VALUES 
 (
@@ -63,14 +63,14 @@ VALUES
    ''
 );
 
-UPDATE `sacs`.`diz_siti` SET `ID_sito` = '0' WHERE `diz_siti`.`ID_sito` = 1;
+UPDATE `sacs`.`DizSiti` SET `idSito` = '0' WHERE `DizSiti`.`idSito` = 1;
 
-INSERT INTO `sacs`.`diz_siti`
+INSERT INTO `sacs`.`DizSiti`
 (
-   `ID_sito`, 
-   `Sito`,
-   `Indirizzo`,
-   `Pianta`
+   `idSito`, 
+   `codiceSito`,
+   `indirizzo`,
+   `piantaAsset`
 ) 
 VALUES 
 (
@@ -80,47 +80,47 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_siti`
+INSERT INTO `sacs`.`DizSiti`
 (
-   `ID_sito`, 
-   `Sito`,
-   `Indirizzo`,
-   `Pianta`
+   `idSito`, 
+   `codiceSito`,
+   `indirizzo`,
+   `piantaAsset`
 ) 
 VALUES 
 (
    2,
    'SACS_02',
-   'SACS_02 - Indirizzo prossimo podere',   
+   'SACS_02 - indirizzo prossimo podere',   
    ''
 );
 
 COMMIT;
 
 /*
- * diz_soc_abilitazioni
+ * DizSocAbilitazioni - Abilitazioni nelle societa' e multisocietarie
  */
 
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`diz_soc_abilitazioni`; 
+DROP TABLE IF EXISTS `sacs`.`DizSocAbilitazioni`; 
 
-CREATE TABLE IF NOT EXISTS `sacs`.`diz_soc_abilitazioni` 
+CREATE TABLE IF NOT EXISTS `sacs`.`DizSocAbilitazioni` 
 ( 
-   `ID_Abil`           VARCHAR(3)          NOT NULL     PRIMARY KEY          COMMENT 'Z01=pecore, Z02=capre...', 
-   `Descrizione`       VARCHAR(40)         NOT NULL,
-   `Management`        BOOLEAN             NOT NULL DEFAULT false, 
-   `Multisito`         BOOLEAN             NOT NULL DEFAULT false, 
-   `Icona`             VARCHAR(255)        NULL 
+   `idAbilitazione`    VARCHAR(3)          NOT NULL     PRIMARY KEY          COMMENT 'Z01=pecore, Z02=capre...', 
+   `descrAbil`         VARCHAR(40)         NOT NULL,
+   `flagManagement`    BOOLEAN             NOT NULL DEFAULT false, 
+   `flagMultisito`     BOOLEAN             NOT NULL DEFAULT false, 
+   `iconaInterfaccia`  VARCHAR(255)        NULL 
 ) ENGINE = InnoDB;
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management` , 
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement` , 
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -131,30 +131,30 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
    'M00',
-   'SACS_00 Management',
+   'SACS_00 flagManagement',
    true,
    false,
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -165,13 +165,13 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -182,13 +182,13 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -199,13 +199,13 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -216,13 +216,13 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -233,13 +233,13 @@ VALUES
    ''
 );
 
-INSERT INTO `sacs`.`diz_soc_abilitazioni`
+INSERT INTO `sacs`.`DizSocAbilitazioni`
 (
-   `ID_Abil` ,
-   `Descrizione` ,
-   `Management`,
-   `Multisito`, 
-   `Icona` 
+   `idAbilitazione` ,
+   `descrAbil` ,
+   `flagManagement`,
+   `flagMultisito`, 
+   `iconaInterfaccia` 
 ) 
 VALUES 
 (
@@ -253,33 +253,33 @@ VALUES
 COMMIT;
 
 /*
- * Utenti
+ * Utenti - Anagrafica Personale e Profilo Contrattuale
  */
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`utenti`;
+DROP TABLE IF EXISTS `sacs`.`Utenti`;
 
-CREATE TABLE IF NOT EXISTS `sacs`.`utenti` 
+CREATE TABLE IF NOT EXISTS `sacs`.`Utenti` 
 (
-   `ID_Utente`     VARCHAR(31)         NOT NULL                PRIMARY KEY, 
-   `Nome`          VARCHAR(32)         NOT NULL, 
-   `Cognome`       VARCHAR(32)         NOT NULL, 
-   `CF`            VARCHAR(16)         NOT NULL,
-   `UID`           VARCHAR(32)         NULL, 
-   `PWD`           VARCHAR(255)        NULL, 
-   `PWD2CHANGE`    BOOLEAN             NOT NULL DEFAULT true, 
-   `IsManagement`  BOOLEAN             NOT NULL DEFAULT false  COMMENT 'Se true, può gestire o assegnare altri utenti',
-   `IsMultisito`   BOOLEAN             NOT NULL DEFAULT false  COMMENT 'Se true, opera o gestisce su scala globale (tutti i siti)',
-   `DataReg`       DATE                NOT NULL,
-   `DataFine`      DATE                NULL,
-   `ID_CausaFine`  BIGINT UNSIGNED     NULL,
-   CONSTRAINT `UQ_utenti_CF` UNIQUE (`CF`),
-   CONSTRAINT `UQ_utenti_UID` UNIQUE (`UID`)
+   `idUtente`            VARCHAR(31)         NOT NULL                PRIMARY KEY, 
+   `nome`                VARCHAR(32)         NOT NULL, 
+   `cognome`             VARCHAR(32)         NOT NULL, 
+   `codiceFiscale`       VARCHAR(16)         NOT NULL,
+   `username`            VARCHAR(32)         NULL, 
+   `passwordHash`        VARCHAR(255)        NULL, 
+   `forzaCambioPassword` BOOLEAN             NOT NULL DEFAULT true, 
+   `isManagementRoot`    BOOLEAN             NOT NULL DEFAULT false  COMMENT 'Se true, può gestire o assegnare altri Utenti. Profilo contrattuale/potenziale di gestione dell\'utente.',
+   `isMultisitoRoot`     BOOLEAN             NOT NULL DEFAULT false  COMMENT 'Se true, opera o gestisce su scala globale (tutti i siti). Profilo contrattuale/potenziale multisito dell\'utente',
+   `dataRegistrazione`   DATE                NOT NULL,
+   `dataCessazione`      DATE                NULL,
+   `fkCausaFine`         BIGINT UNSIGNED     NULL                    COMMENT 'Il prefisso fk esplicita il vincolo con la tabella delle cause.',
+   CONSTRAINT `UQ_utenti_CF` UNIQUE (`codiceFiscale`),
+   CONSTRAINT `UQ_utenti_UID` UNIQUE (`username`)
 ) ENGINE = InnoDB;
 
-ALTER TABLE `sacs`.`utenti`   ADD CONSTRAINT 
-  FOREIGN KEY (`ID_CausaFine`) 
-  REFERENCES `sacs`.`diz_utenti_causafine` (`ID_CausaFine`); 
+  ALTER TABLE `sacs`.`Utenti`   ADD CONSTRAINT 
+  FOREIGN KEY (`fkCausaFine`) 
+  REFERENCES `sacs`.`DizUtentiCausaFine`(`idCausaFine`); 
   
 /*
  * Utente root 
@@ -288,20 +288,20 @@ ALTER TABLE `sacs`.`utenti`   ADD CONSTRAINT
  *            Crea i manager per ogni sito (eventualmente se stsso)
  *            Gestisce i dizionari
  */
-insert into`sacs`.`utenti` 
+insert into`sacs`.`Utenti` 
 (
-   `ID_Utente`,
-   `Nome`,
-   `Cognome`,
-   `CF`,
-   `UID`,
-   `PWD`,
-   `PWD2CHANGE`,
-   `IsManagement`,
-   `IsMultisito`,
-   `DataReg`,
-   `DataFine`,
-   `ID_CausaFine`
+   `idUtente`,
+   `nome`,
+   `cognome`,
+   `codiceFiscale`,
+   `username`,
+   `passwordHash`,
+   `forzaCambioPassword`,
+   `isManagementRoot`,
+   `isMultisitoRoot`,
+   `dataRegistrazione`,
+   `dataCessazione`,
+   `fkCausaFine`
 )
 values 
 (
@@ -310,7 +310,7 @@ values
    'farm',
    'FRMNML00A01C745Y',
    'root',
-   '$2y$10$No7my5ys.Sl5pmxPPVXkkeaTJKY271wAbkUUlT41sx0Cieqd7xwIS',
+   'admin',
    true,
    true,
    true,
@@ -322,34 +322,34 @@ values
 COMMIT;
 
 /*
- * utenti_Impiego
+ * UtentiImpiego - Assegnazione Operativa nei Siti
  * LIVELLO 1: Chi lavora dove, e quando.
  */
 
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`utenti_impiego`;
+DROP TABLE IF EXISTS `sacs`.`UtentiImpiego`;
  
-CREATE TABLE IF NOT EXISTS `sacs`.`utenti_impiego` 
+CREATE TABLE IF NOT EXISTS `sacs`.`UtentiImpiego` 
 (
-   `ID_Impiego`    SERIAL              NOT NULL     PRIMARY KEY,
-   `ID_Utente`     VARCHAR(31)         NOT NULL, 
-   `ID_Sito`       BIGINT UNSIGNED     NOT NULL,
-   `DataInizio`    DATE                NOT NULL,
-   `DataFine`      DATE                NULL,
+   `idImpiego`       SERIAL              NOT NULL     PRIMARY KEY,
+   `fkUtente`        VARCHAR(31)         NOT NULL, 
+   `fkSito`          BIGINT UNSIGNED     NOT NULL,
+   `dataInizio`      DATE                NOT NULL,
+   `dataCessazione`  DATE                NULL,
    
    -- Vincoli per evitare che lo stesso utente sia inserito due volte nello stesso sito nello stesso momento
-   CONSTRAINT `FK_impiego_utente` FOREIGN KEY (`ID_Utente`) REFERENCES `sacs`.`utenti` (`ID_Utente`) ON DELETE RESTRICT ON UPDATE CASCADE,
-   CONSTRAINT `FK_impiego_sito` FOREIGN KEY (`ID_Sito`) REFERENCES `sacs`.`diz_siti` (`ID_Sito`) ON DELETE RESTRICT ON UPDATE CASCADE
+   CONSTRAINT `FK_impiego_utente` FOREIGN KEY (`fkUtente`) REFERENCES `sacs`.`Utenti` (`idUtente`) ON DELETE RESTRICT ON UPDATE CASCADE,
+   CONSTRAINT `FK_impiego_sito` FOREIGN KEY (`fkSito`) REFERENCES `sacs`.`DizSiti` (`idSito`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE = InnoDB;  
 
-insert into `sacs`.`utenti_impiego` 
+insert into `sacs`.`UtentiImpiego` 
 (
-   `ID_Impiego`,
-   `ID_Utente`,
-   `ID_Sito`,
-   `DataInizio`,
-   `DataFine`
+   `idImpiego`,
+   `fkUtente`,
+   `fkSito`,
+   `dataInizio`,
+   `dataCessazione`
 )
 values 
 (
@@ -360,39 +360,39 @@ values
    NULL
 );
 
-UPDATE `sacs`.`utenti_impiego` SET `ID_Impiego` = '0' WHERE `ID_Impiego` = 1;
+UPDATE `sacs`.`UtentiImpiego` SET `idImpiego` = '0' WHERE `idImpiego` = 1;
 
 COMMIT;
 
 /*
- * utenti_abilitazioni
+ * UtentiAbilitazioni. Assegnazione dei Profili nelle societa
  * LIVELLO 2: Quali abilitazioni ha l'utente e in quale contesto
  */
 
 BEGIN;
 
-DROP TABLE IF EXISTS `sacs`.`utenti_abilitazioni`;
+DROP TABLE IF EXISTS `sacs`.`UtentiAbilitazioni`;
  
-CREATE TABLE IF NOT EXISTS `sacs`.`utenti_abilitazioni` 
+CREATE TABLE IF NOT EXISTS `sacs`.`UtentiAbilitazioni` 
 (
-   `ID_UtenteAbil` SERIAL              NOT NULL     PRIMARY KEY,
-   `ID_Utente`     VARCHAR(31)         NOT NULL,
-   `ID_Abil`       VARCHAR(3)          NOT NULL,
-   `ID_Impiego`    BIGINT UNSIGNED     NULL             COMMENT 'Valorizzato SOLO se l abilitazione è legata a uno specifico sito. Se NULL, l abilitazione è Multisito',
-   `AbilInizio`    DATE                NOT NULL,
-   `AbilFine`      DATE                NULL,
+   `idUtenteAbil`   SERIAL              NOT NULL     PRIMARY KEY,
+   `fkUtente`       VARCHAR(31)         NOT NULL         COMMENT 'Collegato a Utenti.idUtente.',
+   `fkAbilitazione` VARCHAR(3)          NOT NULL         COMMENT 'Collegato a DizSocAbilitazioni.idAbilitazione.',
+   `fkImpiego`      BIGINT UNSIGNED     NULL             COMMENT 'Collegato a UtentiImpiego.idImpiego. Valorizzato SOLO se l abilitazione è legata a uno specifico sito. Se NULL, l abilitazione è Multisito',
+   `AbilInizio`     DATE                NOT NULL,
+   `AbilFine`       DATE                NULL,
    
-   CONSTRAINT `FK_abil_utente` FOREIGN KEY (`ID_Utente`) REFERENCES `sacs`.`utenti` (`ID_Utente`) ON DELETE CASCADE ON UPDATE CASCADE,
-   CONSTRAINT `FK_abil_codice` FOREIGN KEY (`ID_Abil`) REFERENCES `sacs`.`diz_soc_abilitazioni` (`ID_Abil`) ON DELETE RESTRICT ON UPDATE CASCADE,
-   CONSTRAINT `FK_abil_impiego` FOREIGN KEY (`ID_Impiego`) REFERENCES `sacs`.`utenti_impiego` (`ID_Impiego`) ON DELETE SET NULL ON UPDATE CASCADE
+   CONSTRAINT `FK_abil_utente` FOREIGN KEY (`fkUtente`) REFERENCES `sacs`.`Utenti` (`idUtente`) ON DELETE CASCADE ON UPDATE CASCADE,
+   CONSTRAINT `FK_abil_codice` FOREIGN KEY (`fkAbilitazione`) REFERENCES `sacs`.`DizSocAbilitazioni` (`idAbilitazione`) ON DELETE RESTRICT ON UPDATE CASCADE,
+   CONSTRAINT `FK_abil_impiego` FOREIGN KEY (`fkImpiego`) REFERENCES `sacs`.`UtentiImpiego` (`idImpiego`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-insert into `sacs`.`utenti_abilitazioni` 
+insert into `sacs`.`UtentiAbilitazioni` 
 (
-   `ID_UtenteAbil`,
-   `ID_Utente`,
-   `ID_Abil`,
-   `ID_Impiego`,
+   `idUtenteAbil`,
+   `fkUtente`,
+   `fkAbilitazione`,
+   `fkImpiego`,
    `AbilInizio`,
    `AbilFine`
 )
@@ -406,6 +406,6 @@ values
    NULL
 );
 
-UPDATE `sacs`.`utenti_abilitazioni` SET `ID_UtenteAbil` = '0' WHERE `ID_UtenteAbil` = 1;
+UPDATE `sacs`.`UtentiAbilitazioni` SET `idUtenteAbil` = '0' WHERE `idUtenteAbil` = 1;
 
 COMMIT;
