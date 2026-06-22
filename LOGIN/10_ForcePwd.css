@@ -1,0 +1,150 @@
+/* Box-sizing globale per calcolare correttamente margini e bordi su ogni schermo */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #faebd7; /* AntiqueWhite */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header flessibile e moderno */
+.force-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.HeadIcon {
+  width: 35px; 
+  height: 35px;   
+  cursor: pointer;
+  object-fit: contain;
+}
+
+/* Contenitore principale centrato */
+.main-container {
+  flex: 1;
+  max-width: 480px;
+  width: 92%;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Immagine della mascotte / Lucchetto flessibile */
+.hero-image {
+  width: 100%;
+  max-width: 90px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Box riepilogo dati dell'utente corrente */
+.user-info-box {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-left: 4px solid darkcyan;
+  padding: 15px;
+  text-align: left;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Card del Modulo */
+.form-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;  
+  border-radius: 4px;
+  font-size: 16px; /* Evita lo zoom forzato su smartphone */
+}
+
+.warning-text {
+  color: #c0392b;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 15px 0;
+  line-height: 1.4;
+}
+
+/* Pulsante principale di conferma */
+.btn-submit {
+  background-color: darkcyan;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+/* --- OTTIMIZZAZIONE COMPATTEZZA SMARTPHONE (Fino a 480px) --- */
+@media screen and (max-width: 480px) {
+  .force-header {
+    padding: 10px 12px;
+  }
+  
+  .header-title {
+    font-size: 1.05rem;
+  }
+
+  .icon-group {
+    gap: 4px; /* Icone più strette e vicine */
+  }
+
+  .HeadIcon {
+    width: 28px; /* Dimensione ridotta a 28px mantenendo IcoVoid */
+    height: 28px;
+  }
+}
