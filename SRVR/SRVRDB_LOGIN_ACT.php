@@ -24,7 +24,7 @@
     {
       $QryArr=new SqlQueryArr;
       $Qry = new SqlQuery();
-      $Qry->set_SqlTxt(
+      /*$Qry->set_SqlTxt(
         "SELECT `utenti`.`ID_Utente`, `utenti`.`Nome`, `utenti`.`Cognome`, `CF`, `UID`, `PWD`, `PWD2CHANGE`, `sito`, 
          `diz_soc_abilitazioni`.`Management`,  `diz_soc_abilitazioni`.`ID_Abil`, `Descrizione`, `Multisito`, `Icona` ,
          `DataReg`, `utenti`.`DataFine`, `IDCausaFine` 
@@ -38,11 +38,50 @@
           `utenti_impiego`.`DataFine` IS NULL AND
           `utenti`.`DataFine` IS NULL AND
           UID=? and PWD=? order by sito"
-      );
+      /*$Qry->set_SqlTxt(
+      );*/
+      $Qry->set_SqlTxt(
+        "SELECT 
+          u.`idUtente`, 
+          u.`nome`, 
+          u.`cognome`, 
+          u.`username`, 
+          u.`passwordHash`, 
+          u.`forzaCambioPassword`, 
+          u.`isManagementRoot`, 
+          u.`isMultisitoRoot`, 
+          u.`dataRegistrazione`,
+          ui.`idImpiego`,
+          ui.`dataInizio` AS `impiegoInizio`,
+          ds.`idSito`, 
+          ds.`codiceSito`, 
+          ds.`indirizzo`, 
+          ds.`piantaAsset`,
+          ua.`idUtenteAbil`,
+          ua.`fkAbilitazione`,               -- VARCHAR(3) (Es. Z01, Z02)
+          ua.`AbilInizio`,
+          dsa.`descrAbil` AS `ruoloAziendale`, 
+          dsa.`flagManagement`, 
+          dsa.`flagMultisito`, 
+          dsa.`iconaInterfaccia`
+        FROM `sacs`.`Utenti` u
+        INNER JOIN `sacs`.`UtentiImpiego` ui ON u.`idUtente` = ui.`fkUtente`
+        INNER JOIN `sacs`.`DizSiti` ds ON ui.`fkSito` = ds.`idSito`
+        INNER JOIN `sacs`.`UtentiAbilitazioni` ua ON u.`idUtente` = ua.`fkUtente`
+        INNER JOIN `sacs`.`DizSocAbilitazioni` dsa ON ua.`fkAbilitazione` = dsa.`idAbilitazione`
+        WHERE u.`dataRegistrazione` IS NOT NULL AND
+              u.`dataCessazione` IS NULL AND
+              u.`fkCausafine` IS NULL AND
+              ui.`dataInizio` IS NOT NULL AND
+              ui.`dataCessazione` IS NULL AND
+              ua.`AbilFine` IS NULL AND -- Verifica che l'abilitazione non sia scaduta
+              (ua.`fkImpiego` = ui.`idImpiego` OR ua.`fkImpiego` IS NULL) AND -- Logica per ruoli Locali o Globali
+              u.`username` = ?
+              ORDER BY ds.`codiceSito` ASC, ua.`fkImpiego` ASC;" 
+      );  
       $Qry->set_Parm($_post["UID"]);
-      $Qry->set_Parm($_post["PWD"]);
       $Qry->set_Type("S");
-      $Qry->set_NField(13);
+      $Qry->set_NField(22);
       $QryArr->push_Query($Qry);
       $QryArr->set_Transaction(false);
       $QryArr->set_RollBack(false);
@@ -74,7 +113,9 @@
         throw new Exception("{$THIS_FUNCTION} - got error calling DisplayErr");
       }
     }
-    /* TROVATO */
+    /* 
+     * TROVATO 
+     */
     if ($Qry->get_NRec() > 0) 
     {
       WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - QUERY EXECUTION RETURNED ".$Qry->get_Nrec()." RECORDS", NULL);
