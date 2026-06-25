@@ -9,31 +9,37 @@ function Validate(Act)
       const pwdField = document.getElementById('ID_PWD');
 
       // Protezione dagli spazi vuoti inseriti accidentalmente su mobile
-      if (!uidField || uidField.value.trim() === '') {
+      if (!uidField || uidField.value.trim() === '') 
+      {
         alert('Immettere Username');
         if(uidField) uidField.focus();
         return;  
       }
-      if (!pwdField || pwdField.value.trim() === '') {
+      if (!pwdField || pwdField.value.trim() === '') 
+      {
         alert('Immettere Password');
         if(pwdField) pwdField.focus();
         return;  
       }
 
-      try {
+      try 
+      {
         const ArrParL = [
           { name: "UID", type: "hidden", label: "Nome Utente", value: uidField.value.trim() },
           { name: "PWD", type: "hidden", label: "Password", value: pwdField.value }
         ];
 
         // Creazione dinamica tramite la tua funzione di libreria in CMN_JS.js
+        // function MakeForm(Doc, FrmName, SrvrAction, FrmFrom, Sector, IDAction, ArrPar)
         const L_FRM = MakeForm(document, 'FrmLogin', '../SRVR/SRVR.php', '00_Login', 'LOGIN', Act, ArrParL);
-        if (L_FRM) {
+        if (L_FRM) 
+        {
           document.body.appendChild(L_FRM);  
           L_FRM.submit();
         }
       }
-      catch(err) {
+      catch(err) 
+      {
         alert('ERRORE: FILE:' + _FF_ + ' Act:' + Act + ' Errore: ' + err.message);
       }
       break;
