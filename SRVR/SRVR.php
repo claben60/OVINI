@@ -38,7 +38,7 @@
   try 
   {
     //e' prima la richiesta fatta dal programma, avere le risorse per scrivere su output
-    @require "./SRVR_LOG.php";
+    require "./SRVR_LOG.php";
   } 
   catch (Exception | Error $e) 
   {
