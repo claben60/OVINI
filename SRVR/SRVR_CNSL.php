@@ -2,7 +2,7 @@
   /**
    * Funzione Console: Gestisce la manipolazione dei parametri ed esegue la sottomissione POST
   */
-  function Console($FROM, $SrvrAction, $FrmFrom, $Sector, $IDAction, $ArrPar = []) 
+  function Cnsl($FROM,$FrmName, $SrvrAction, $FrmFrom, $Sector, $IDAction, $ArrPar= [])
   {
   
     $THIS_FILE=basename(__FILE__,".php");
@@ -11,12 +11,12 @@
     WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} WRITING FORM ", NULL);
     try
     {
-      echo '<form id="frmVirtualConsole" action="' . htmlspecialchars($SrvrAction) . '" method="POST" style="display:none;">';
+      echo '<form id="'.$FrmName.'" action="' . htmlspecialchars($SrvrAction) . '" method="POST" style="display:none;">';
 
       // Parametri fissi della struttura MakeForm
       echo '<input type="hidden" name="SECTOR" value="' . htmlspecialchars($Sector) . '">';
       echo '<input type="hidden" name="IDAction" value="' . htmlspecialchars($IDAction) . '">';
-      echo '<input type="hidden" name="FROM" value="' . htmlspecialchars($FrmFrom) . '">';
+      echo '<input type="hidden" name="FrmFrom" value="' . htmlspecialchars($FrmFrom) . '">';
 
       // Iniezione dinamica di tutti i parametri nell'array (incluso l'oggetto utente a staffe)
       foreach ($ArrPar as $param) 
