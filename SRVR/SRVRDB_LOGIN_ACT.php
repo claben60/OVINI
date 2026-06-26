@@ -138,7 +138,7 @@
         {
          // Attiva la console forzando la sottomissione a SRVR.php con destinazione ForcePwd
           WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - PASSWORD CHANGE NEEDED", NULL);
-          Console('../SRVR/SRVR.php', $utente->getUsername(), 'LOGIN', 'LOGIN_F', $parametriPost);
+          Cnsl($FROM,'FrmForce', '../SRVR/SRVR.php', $THIS_FUNCTION, 'LOGIN', 'LOGIN_F', $ArrPar),
         } 
         catch (Exception | Error $e) 
         {
@@ -154,7 +154,7 @@
         {
           // Attiva la console forzando la sottomissione a SRVR.php con destinazione Choose
           WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - CHOOSE NEEDED", NULL);
-          Console('../SRVR/SRVR.php', $utente->getUsername(), 'LOGIN', 'LOGIN_C', $parametriPost);
+          Cnsl($FROM,'FrmChoose', '../SRVR/SRVR.php', $THIS_FUNCTION, 'LOGIN', 'LOGIN_C', $ArrPar),
         }
         catch (Exception | Error $e) 
         {
