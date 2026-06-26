@@ -98,6 +98,22 @@
    * DISPLAY_ERR - Errori utente
    * DISPLAY_MSG - Messaggi all' utente
    */
+ /*
+   * SRVR_CNSL - UTENTE (CONSOLE) VIRTUALE
+   */ 
+  try 
+  {  
+    @require "./SRVR_CNSL.php"; // Oggetti del Programma
+    WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "File SRVR_CNSL avaliable", NULL);
+  }
+  catch (Exception | Error $e) 
+  {
+    //catch exception
+    WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "A file in the directory SRVR is not avaliable", NULL);
+    WriteErr($FROM, $THIS_FUNCTION, $THIS_FILE, $e->getLine(), $e->getMessage());
+    require "../MSG/SYS_ERR.html";
+    die();
+  }
   /*
    * SRVR_CLASS - OGGETTI DEL PROGRAMMA
    */ 
