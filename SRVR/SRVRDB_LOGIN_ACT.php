@@ -126,12 +126,46 @@
       }
       catch (Exception | Error $e) 
       {
-        WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - utentObj cannot be created", NULL);
+        WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - utenteObj cannot be created", NULL);
         WriteErr($FROM, $THIS_FUNCTION, $THIS_FILE, $e->getLine(), $e->getMessage());
         require "../MSG/SYS_ERR.html";
-        throw new Exception("{$THIS_FUNCTION} - utentObj cannot be created");        
+        throw new Exception("{$THIS_FUNCTION} - utenteObj cannot be created");        
       }
-      if ($Qry->get_Rec(0)["forzaCambioPassword"] == true) 
+      /* nuovo - inizio */
+      if ($utente->getForzaCambioPassword() === true) 
+      { 
+        try
+        {
+         // Attiva la console forzando la sottomissione a SRVR.php con destinazione ForcePwd
+          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - PASSWORD CHANGE NEEDED", NULL);
+          Console('../SRVR/SRVR.php', $utente->getUsername(), 'LOGIN', 'LOGIN_F', $parametriPost);
+        } 
+        catch (Exception | Error $e) 
+        {
+          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - Unable to start the password change.", NULL);
+          WriteErr($FROM, $THIS_FUNCTION, $THIS_FILE, $e->getLine(), $e->getMessage());
+          require "../MSG/SYS_ERR.html";
+          throw new Exception("{$THIS_FUNCTION} - Unable to start the password change.");        
+        }
+      }
+      if ($utente->getForzaCambioPassword() === false) 
+      {
+        try
+        {
+          // Attiva la console forzando la sottomissione a SRVR.php con destinazione Choose
+          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - CHOOSE NEEDED", NULL);
+          Console('../SRVR/SRVR.php', $utente->getUsername(), 'LOGIN', 'LOGIN_C', $parametriPost);
+        }
+        catch (Exception | Error $e) 
+        {
+          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - Unable to start Choose", NULL);
+          WriteErr($FROM, $THIS_FUNCTION, $THIS_FILE, $e->getLine(), $e->getMessage());
+          require "../MSG/SYS_ERR.html";
+          throw new Exception("{$THIS_FUNCTION} - Unable to start Choose");        
+        }
+      }
+      /* nuovo - Fine */
+      /*if ($Qry->get_Rec(0)["forzaCambioPassword"] == true) 
       {
         try 
         {
@@ -176,7 +210,7 @@
            * NOTA Nella Choose le azioni si incominciano ad attribuire all' utente per mezzo della 
            * $FROM="ID_Utente"
            */ 
-          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} USER CHOOSE BEGIN", NULL);
+/*          WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} USER CHOOSE BEGIN", NULL);
           Choose($FROM, $Qry->get_ArrRec());
           WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} USER CHOOSE END", NULL);
         } 
@@ -185,8 +219,9 @@
           WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} got error calling Choose", NULL);
           WriteErr($FROM, $THIS_FUNCTION, $THIS_FILE, $e->getLine(), $e->getMessage());
           require "../MSG/SYS_ERR.html";
-          throw new Exception("{$THIS_FUNCTION} got error calling Choose");         }
-      }
+          throw new Exception("{$THIS_FUNCTION} got error calling Choose");         
+        }
+      }*/
     }
     unset($QryArr);
     WriteLog("S", $FROM, $THIS_FUNCTION, $THIS_FILE, "{$THIS_FUNCTION} - ActLogin ends", NULL);
