@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SACS - Pagina di blocco per errore fatale di sistema." />
+  <title>SACS - ERRORE DI SISTEMA</title>
+  <link rel="stylesheet" href="../MSG/SYS_ERR.css">
+</head>
+<body>
+
+  <!-- Header Semantico e Flessibile -->
+  <header class="sys-header">
+    <div class="icon-group">
+      <img class="HeadIcon" alt="" src="../icone/IcoVoid_50x50.png">
+      <img class="HeadIcon" alt="SACS Logo" src="../icone/IcoLogo_50x50.png">
+    </div>
+    <div class="header-title">SACS - ERRORE</div>
+    <div class="icon-group">
+      <a href="/ovini/Index.html" aria-label="Torna all'inizio">
+        <img class="HeadIcon" alt="Indietro" src="../icone/IcoBack_50x50.png">
+      </a>
+      <img class="HeadIcon" alt="Ricarica" src="../icone/IcoReload_50x50.png" onclick="location.reload()">
+    </div>
+  </header>
+
+  <!-- Contenitore Centrale Unico Autoadattivo -->
+  <main class="sys-container">
+    
+    <img class="sys-image" alt="Icona Errore Critico" src="../icone/IcoErr-250x250.png">
+<?php if (isset($oraCrash)): ?>
+    <hr style="border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 10px 0;">
+    <div style="font-size: 0.85rem; color: #333;">ID Evento: <?php echo $oraCrash; ?></div>
+<?php endif; ?>
+    <h2>ERRORE DI SISTEMA</h2>
+    <p class="Advice">SI FERMA L'ELABORAZIONE</p>
+    
+    <!-- Box Assistenza centralizzato e leggibile -->
+    <div class="Address">
+      <strong>PER CONTATTARE L'ASSISTENZA SACS:</strong><br>
+      TEL: XXX XXX XXXX<br>
+      MAIL: aaaa@bbb.cccc
+    </div>
+    
+  </main>
+
+</body>
+</html>
