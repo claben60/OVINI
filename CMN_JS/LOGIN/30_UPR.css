@@ -1,0 +1,138 @@
+/* Box-sizing globale per calcolare correttamente margini e bordi */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header responsive */
+.upr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.icon-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.HeadIcon {
+  width: 35px; 
+  height: 35px;   
+  cursor: pointer;
+  object-fit: contain;
+}
+
+/* Contenitore principale centrato */
+.main-container {
+  flex: 1;
+  max-width: 500px;
+  width: 92%;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Card del modulo */
+.form-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;  
+  border-radius: 4px;
+  font-size: 16px; /* Impedisce lo zoom automatico forzato su iOS */
+}
+
+/* Linea tratteggiata per separare i campi condizionali di registrazione */
+.conditional-fields {
+  border-top: 1px dashed #ddd;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+/* Pulsante principale */
+.btn-submit {
+  background-color: darkcyan;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+/* --- OTTIMIZZAZIONE COMPATTEZZA SMARTPHONE (Fino a 480px) --- */
+@media screen and (max-width: 480px) {
+  .upr-header {
+    padding: 10px 12px;
+  }
+  
+  .header-title {
+    font-size: 1.05rem;
+  }
+
+  .icon-group {
+    gap: 4px; /* Icone più vicine */
+  }
+
+  .HeadIcon {
+    width: 28px; /* Ridotte a 28px su smartphone mantenendo IcoVoid */
+    height: 28px;
+  }
+}
