@@ -1,0 +1,210 @@
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_LOG avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File DISPLAY_ERR avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File DISPLAY_MSG avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_CLASS avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_CLASS avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_INI avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_LOGIN_ACT avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_SQL avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main)[post] - FILE: SRVR - POST RECEIVED -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main)[post] - FILE: SRVR - RECEIVED POST VALIDATED - FORM: FrmLogin Parameters:
+FRMNAME:FrmLogin
+FROM:00_Login
+SECTOR:LOGIN
+IDACTION:LOGIN_L
+ACTION:../SRVR/SRVR.php
+PAYLOAD[UTENTE][username]:root
+PAYLOAD[UTENTE][password]:admin
+[2026-07-06 23:27:49] - FROM: clPost - FUNCTION: SRVR_CLASS(__construct) - FILE: SRVR_CLASS - Costruttore clPost INIZIO -  -
+[2026-07-06 23:27:49] - FROM: clPost - FUNCTION: SRVR_CLASS(__construct) - FILE: SRVR_CLASS - Costruttore clPost FINE OK -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - Oggetto clPost istanziato con successo - FORM: FrmLogin Parameters:
+FRMNAME:FrmLogin
+SECTOR:LOGIN
+IDACTION:LOGIN_L
+FROM:00_Login
+ACTION:../SRVR/SRVR.php
+UTENTE[idUtente]:
+UTENTE[username]:
+UTENTE[forzaCambioPassword]:
+PAYLOAD[UTENTE][username]:root
+PAYLOAD[UTENTE][password]:admin
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_LOGIN avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR_LOGIN(Login)[LOGIN_L] - FILE: SRVR_LOGIN - LOGIN - START -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - ActLogin begins -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - PREPARED QUERY (Select) -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - START QUERY EXECUTION (Select) -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running QueryExec -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Found 1 query -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Queries required: - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :1
+  N.field     :25
+  N Rec       :0
+  SQL text    :SELECT
+          u.`idUtente`, 
+          u.`nome`, 
+          u.`cognome`, 
+          u.`codiceFiscale`, 
+          u.`username`,
+          u.`passwordHash`, 
+          u.`forzaCambioPassword`, 
+          u.`isManagementRoot`, 
+          u.`isMultisitoRoot`,
+          u.`dataRegistrazione`,
+          ui.`idImpiego`, 
+          ui.`dataInizio` AS `impiegoInizio`, 
+          ui.`fkSito`,
+          ds.`idSito`, 
+          ds.`codiceSito`, 
+          ds.`indirizzo`, 
+          ds.`piantaAsset`,
+          ua.`idUtenteAbil`, 
+          ua.`fkAbilitazione`, 
+          ua.`fkImpiego`, 
+          ua.`AbilInizio`,
+          dsa.`descrAbil` AS `ruoloAziendale`, 
+          dsa.`flagManagement`, 
+          dsa.`flagMultisito`, 
+          dsa.`iconaInterfaccia`
+        FROM 
+          `sacs`.`Utenti` u
+          LEFT JOIN `sacs`.`UtentiImpiego` ui ON u.`idUtente` = ui.`fkUtente` AND ui.`dataCessazione` IS NULL
+          LEFT JOIN `sacs`.`DizSiti` ds ON ui.`fkSito` = ds.`idSito`
+          LEFT JOIN `sacs`.`UtentiAbilitazioni` ua ON u.`idUtente` = ua.`fkUtente` AND ua.`AbilFine` IS NULL
+          LEFT JOIN `sacs`.`DizSocAbilitazioni` dsa ON ua.`fkAbilitazione` = dsa.`idAbilitazione`
+        WHERE 
+          (u.`dataCessazione` IS NULL OR u.`dataCessazione` > CURDATE()) 
+          AND u.`username` = ?
+PARMS:
+0 => root
+ -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Connecting to DB -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Open) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Open) - START PDO CREATION -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Open) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Open) - END PDO CREATION -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Connection to DB done -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running DB_ExecSelect  -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - STARTING SELECT -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - SELECT DONE -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - FETCH BEGIN  -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - FETCH END 1 recods avaliable -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - DB_ExecSelect ended -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running DB_Close -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Close) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Close) - START PDO CLOSE -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Close) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Close) - END PDO CLOSE -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - DB_Close end -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - QueryExec terminated -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - END QUERY EXECUTION (Select) -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - QUERY EXECUTION RETURNED 1 RECORDS -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - utenteObj created -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - ArrPar created -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - 10_ForcePwd not found -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR_LOGIN(Login)[LOGIN_L] - FILE: SRVR_LOGIN - Login error -  -
+[2026-07-06 23:27:49] - FROM: SRVR - FUNCTION: SRVR(main)[LOGIN] - FILE: SRVR - Login error -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_LOG avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File DISPLAY_ERR avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File DISPLAY_MSG avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_CLASS avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_CLASS avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_INI avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_LOGIN_ACT avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVRDB_SQL avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main)[post] - FILE: SRVR - POST RECEIVED -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main)[post] - FILE: SRVR - RECEIVED POST VALIDATED - FORM: FrmLogin Parameters:
+FRMNAME:FrmLogin
+FROM:00_Login
+SECTOR:LOGIN
+IDACTION:LOGIN_L
+ACTION:../SRVR/SRVR.php
+PAYLOAD[UTENTE][username]:root
+PAYLOAD[UTENTE][password]:admin
+[2026-07-06 23:29:12] - FROM: clPost - FUNCTION: SRVR_CLASS(__construct) - FILE: SRVR_CLASS - Costruttore clPost INIZIO -  -
+[2026-07-06 23:29:12] - FROM: clPost - FUNCTION: SRVR_CLASS(__construct) - FILE: SRVR_CLASS - Costruttore clPost FINE OK -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - Oggetto clPost istanziato con successo - FORM: FrmLogin Parameters:
+FRMNAME:FrmLogin
+SECTOR:LOGIN
+IDACTION:LOGIN_L
+FROM:00_Login
+ACTION:../SRVR/SRVR.php
+UTENTE[idUtente]:
+UTENTE[username]:
+UTENTE[forzaCambioPassword]:
+PAYLOAD[UTENTE][username]:root
+PAYLOAD[UTENTE][password]:admin
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - File SRVR_LOGIN avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVR_LOGIN(Login)[LOGIN_L] - FILE: SRVR_LOGIN - LOGIN - START -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - ActLogin begins -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - PREPARED QUERY (Select) -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - START QUERY EXECUTION (Select) -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running QueryExec -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Found 1 query -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Queries required: - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :1
+  N.field     :25
+  N Rec       :0
+  SQL text    :SELECT
+          u.`idUtente`, 
+          u.`nome`, 
+          u.`cognome`, 
+          u.`codiceFiscale`, 
+          u.`username`,
+          u.`passwordHash`, 
+          u.`forzaCambioPassword`, 
+          u.`isManagementRoot`, 
+          u.`isMultisitoRoot`,
+          u.`dataRegistrazione`,
+          ui.`idImpiego`, 
+          ui.`dataInizio` AS `impiegoInizio`, 
+          ui.`fkSito`,
+          ds.`idSito`, 
+          ds.`codiceSito`, 
+          ds.`indirizzo`, 
+          ds.`piantaAsset`,
+          ua.`idUtenteAbil`, 
+          ua.`fkAbilitazione`, 
+          ua.`fkImpiego`, 
+          ua.`AbilInizio`,
+          dsa.`descrAbil` AS `ruoloAziendale`, 
+          dsa.`flagManagement`, 
+          dsa.`flagMultisito`, 
+          dsa.`iconaInterfaccia`
+        FROM 
+          `sacs`.`Utenti` u
+          LEFT JOIN `sacs`.`UtentiImpiego` ui ON u.`idUtente` = ui.`fkUtente` AND ui.`dataCessazione` IS NULL
+          LEFT JOIN `sacs`.`DizSiti` ds ON ui.`fkSito` = ds.`idSito`
+          LEFT JOIN `sacs`.`UtentiAbilitazioni` ua ON u.`idUtente` = ua.`fkUtente` AND ua.`AbilFine` IS NULL
+          LEFT JOIN `sacs`.`DizSocAbilitazioni` dsa ON ua.`fkAbilitazione` = dsa.`idAbilitazione`
+        WHERE 
+          (u.`dataCessazione` IS NULL OR u.`dataCessazione` > CURDATE()) 
+          AND u.`username` = ?
+PARMS:
+0 => root
+ -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Connecting to DB -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Open) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Open) - START PDO CREATION -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Open) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Open) - END PDO CREATION -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Connection to DB done -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running DB_ExecSelect  -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - STARTING SELECT -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - SELECT DONE -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - FETCH BEGIN  -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_ExecSelect) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_ExecSelect) - FETCH END 1 recods avaliable -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - DB_ExecSelect ended -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - Running DB_Close -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Close) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Close) - START PDO CLOSE -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(DB_Close) - FILE: SRVRDB_SQL - SRVRDB_SQL(DB_Close) - END PDO CLOSE -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - DB_Close end -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_SQL(QueryExec) - FILE: SRVRDB_SQL - SRVRDB_SQL(QueryExec) - QueryExec terminated -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - END QUERY EXECUTION (Select) -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - QUERY EXECUTION RETURNED 1 RECORDS -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - utenteObj created -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - ArrPar created -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - PASSWORD CHANGE NEEDED -  -
+[2026-07-06 23:29:12] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - PASSWORD CHANGE DONE -  -
+[2026-07-06 23:29:13] - FROM: SRVR - FUNCTION: SRVRDB_LOGIN_ACT(ActLogin) - FILE: SRVRDB_LOGIN_ACT - SRVRDB_LOGIN_ACT(ActLogin) - ActLogin ends -  -
+[2026-07-06 23:29:13] - FROM: SRVR - FUNCTION: SRVR_LOGIN(Login)[LOGIN_L] - FILE: SRVR_LOGIN - LOGIN - END -  -
+[2026-07-06 23:29:13] - FROM: SRVR - FUNCTION: SRVR(main) - FILE: SRVR - SRVR.PHP END -  -

@@ -1,0 +1,90 @@
+[2026-07-06 23:27:49] - FROM: SRVR - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :25
+  N Rec       :1
+  SQL text    :SELECT
+          u.`idUtente`, 
+          u.`nome`, 
+          u.`cognome`, 
+          u.`codiceFiscale`, 
+          u.`username`,
+          u.`passwordHash`, 
+          u.`forzaCambioPassword`, 
+          u.`isManagementRoot`, 
+          u.`isMultisitoRoot`,
+          u.`dataRegistrazione`,
+          ui.`idImpiego`, 
+          ui.`dataInizio` AS `impiegoInizio`, 
+          ui.`fkSito`,
+          ds.`idSito`, 
+          ds.`codiceSito`, 
+          ds.`indirizzo`, 
+          ds.`piantaAsset`,
+          ua.`idUtenteAbil`, 
+          ua.`fkAbilitazione`, 
+          ua.`fkImpiego`, 
+          ua.`AbilInizio`,
+          dsa.`descrAbil` AS `ruoloAziendale`, 
+          dsa.`flagManagement`, 
+          dsa.`flagMultisito`, 
+          dsa.`iconaInterfaccia`
+        FROM 
+          `sacs`.`Utenti` u
+          LEFT JOIN `sacs`.`UtentiImpiego` ui ON u.`idUtente` = ui.`fkUtente` AND ui.`dataCessazione` IS NULL
+          LEFT JOIN `sacs`.`DizSiti` ds ON ui.`fkSito` = ds.`idSito`
+          LEFT JOIN `sacs`.`UtentiAbilitazioni` ua ON u.`idUtente` = ua.`fkUtente` AND ua.`AbilFine` IS NULL
+          LEFT JOIN `sacs`.`DizSocAbilitazioni` dsa ON ua.`fkAbilitazione` = dsa.`idAbilitazione`
+        WHERE 
+          (u.`dataCessazione` IS NULL OR u.`dataCessazione` > CURDATE()) 
+          AND u.`username` = ?
+PARMS:
+0 => root
+
+[2026-07-06 23:29:12] - FROM: SRVR - TRANSAZIONE:
+NQuery:1; Transaction:0; RollBack:0; 
+QUERY:
+  type        :S
+  RC          :0
+  N.field     :25
+  N Rec       :1
+  SQL text    :SELECT
+          u.`idUtente`, 
+          u.`nome`, 
+          u.`cognome`, 
+          u.`codiceFiscale`, 
+          u.`username`,
+          u.`passwordHash`, 
+          u.`forzaCambioPassword`, 
+          u.`isManagementRoot`, 
+          u.`isMultisitoRoot`,
+          u.`dataRegistrazione`,
+          ui.`idImpiego`, 
+          ui.`dataInizio` AS `impiegoInizio`, 
+          ui.`fkSito`,
+          ds.`idSito`, 
+          ds.`codiceSito`, 
+          ds.`indirizzo`, 
+          ds.`piantaAsset`,
+          ua.`idUtenteAbil`, 
+          ua.`fkAbilitazione`, 
+          ua.`fkImpiego`, 
+          ua.`AbilInizio`,
+          dsa.`descrAbil` AS `ruoloAziendale`, 
+          dsa.`flagManagement`, 
+          dsa.`flagMultisito`, 
+          dsa.`iconaInterfaccia`
+        FROM 
+          `sacs`.`Utenti` u
+          LEFT JOIN `sacs`.`UtentiImpiego` ui ON u.`idUtente` = ui.`fkUtente` AND ui.`dataCessazione` IS NULL
+          LEFT JOIN `sacs`.`DizSiti` ds ON ui.`fkSito` = ds.`idSito`
+          LEFT JOIN `sacs`.`UtentiAbilitazioni` ua ON u.`idUtente` = ua.`fkUtente` AND ua.`AbilFine` IS NULL
+          LEFT JOIN `sacs`.`DizSocAbilitazioni` dsa ON ua.`fkAbilitazione` = dsa.`idAbilitazione`
+        WHERE 
+          (u.`dataCessazione` IS NULL OR u.`dataCessazione` > CURDATE()) 
+          AND u.`username` = ?
+PARMS:
+0 => root
+
